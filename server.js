@@ -5,9 +5,13 @@ const app = express();
 
 app.use(morgan('dev'));
 
-app.use((req, res) => {
-  res.send('Hello, movie-used-to-be-goer world!');
-});
+const validMovies = ['Rambo', 'Die Hard', 'Die Hard 2', 'Puss-n-Boots'];
+
+function handleGetMovies(req, res) {
+  res.json(validMovies);
+}
+
+app.get('/movies', handleGetMovies);
 
 const PORT = 5050;
 
